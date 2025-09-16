@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神经网络解释站</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <a class="logo" href="#">神经网络指南</a>
+            <button class="nav-toggle" aria-label="展开导航">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#overview">概览</a></li>
+                <li><a href="#anatomy">组成</a></li>
+                <li><a href="#training">训练流程</a></li>
+                <li><a href="#architectures">网络类型</a></li>
+                <li><a href="#playground">交互体验</a></li>
+                <li><a href="#applications">应用</a></li>
+                <li><a href="#resources">术语&延伸</a></li>
+            </ul>
+        </nav>
+        <section class="hero" id="top">
+            <div class="hero-text">
+                <h1>用直观的方式理解神经网络</h1>
+                <p>神经网络是现代人工智能的核心。本网站以图文和互动的方式，带你从零认识它的概念、结构和真实应用。</p>
+                <a class="cta" href="#overview">开始探索</a>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="node-layer">
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                </div>
+                <div class="node-layer">
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                </div>
+                <div class="node-layer">
+                    <span class="node"></span>
+                    <span class="node"></span>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section id="overview" class="section">
+            <div class="section-header">
+                <h2>什么是神经网络？</h2>
+                <p>神经网络模仿人脑“神经元”互联的方式，从数据中学习复杂的模式与关系，是深度学习最重要的算法之一。</p>
+            </div>
+            <div class="two-column">
+                <div class="column">
+                    <h3>核心思想</h3>
+                    <ul class="feature-list">
+                        <li><strong>分层结构：</strong>输入层、隐藏层、输出层层层推进信息。</li>
+                        <li><strong>可学习参数：</strong>连接线上的<strong>权重</strong>和每个节点的<strong>偏置</strong>决定输出结果。</li>
+                        <li><strong>非线性激活：</strong>让网络能够拟合复杂的非线性关系。</li>
+                        <li><strong>端到端学习：</strong>网络自动从数据中提取特征，减少人工设计。</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>为什么它重要？</h3>
+                    <p>从智能语音助手到自动驾驶汽车，神经网络几乎参与了所有前沿的人工智能产品。得益于海量数据和算力，它们能够“自我调节”以完成图像识别、自然语言理解、生成创意内容等任务。</p>
+                    <p>理解神经网络有助于我们正确使用 AI 工具、做出负责任的技术决策，并发掘新的创新机会。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="anatomy" class="section accent">
+            <div class="section-header">
+                <h2>神经网络的构成</h2>
+                <p>每一个“神经元”其实是一段简单的数学计算，但大量神经元互相连接后，就能形成强大的表示能力。</p>
+            </div>
+            <div class="card-grid">
+                <article class="info-card">
+                    <h3>神经元</h3>
+                    <p>接收多个输入，经过加权求和与激活函数处理后输出结果。常见激活函数有 ReLU、Sigmoid、Tanh 等。</p>
+                </article>
+                <article class="info-card">
+                    <h3>层</h3>
+                    <p>多个神经元组成一层。隐藏层负责逐步提取抽象特征，层数越多，网络越“深”。</p>
+                </article>
+                <article class="info-card">
+                    <h3>权重与偏置</h3>
+                    <p>权重衡量输入的重要性，偏置帮助模型灵活地调整输出。训练的目标就是找到最优参数。</p>
+                </article>
+                <article class="info-card">
+                    <h3>损失函数</h3>
+                    <p>衡量预测与真实答案的差距。常见损失包括均方误差、交叉熵等。</p>
+                </article>
+                <article class="info-card">
+                    <h3>优化器</h3>
+                    <p>例如 SGD、Adam，通过迭代更新参数来减少损失，驱动网络逐渐学到正确的模式。</p>
+                </article>
+                <article class="info-card">
+                    <h3>正则化</h3>
+                    <p>例如 Dropout、L2 惩罚，防止网络在训练数据上记忆过度，从而提升泛化能力。</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="training" class="section">
+            <div class="section-header">
+                <h2>训练流程一览</h2>
+                <p>训练神经网络是一套循环往复的流程，通过不断试错来提升表现。</p>
+            </div>
+            <ol class="timeline">
+                <li>
+                    <h3>1. 准备数据</h3>
+                    <p>收集、清洗、划分数据集（训练/验证/测试），并进行必要的标准化或增强。</p>
+                </li>
+                <li>
+                    <h3>2. 前向传播</h3>
+                    <p>输入数据经过各层计算得到预测输出。</p>
+                </li>
+                <li>
+                    <h3>3. 计算损失</h3>
+                    <p>比较预测与目标之间的差异，得到当前网络的误差。</p>
+                </li>
+                <li>
+                    <h3>4. 反向传播</h3>
+                    <p>利用链式法则计算损失对每个参数的梯度，确定更新方向。</p>
+                </li>
+                <li>
+                    <h3>5. 更新参数</h3>
+                    <p>优化器按照学习率调整权重和偏置，准备下一次循环。</p>
+                </li>
+                <li>
+                    <h3>6. 评估与调优</h3>
+                    <p>在验证集上监控性能，调整超参数并防止过拟合，直到达到满意结果。</p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="architectures" class="section accent">
+            <div class="section-header">
+                <h2>常见网络架构</h2>
+                <p>不同的任务需要不同的网络结构，每种架构都有自己的优势。</p>
+            </div>
+            <div class="card-grid wide">
+                <article class="info-card">
+                    <h3>前馈神经网络（FNN）</h3>
+                    <p>信息只沿一个方向流动，适用于表格、结构化数据，是理解神经网络的基础。</p>
+                </article>
+                <article class="info-card">
+                    <h3>卷积神经网络（CNN）</h3>
+                    <p>利用卷积层提取局部特征，擅长处理图像、视频等带有空间结构的数据。</p>
+                </article>
+                <article class="info-card">
+                    <h3>循环神经网络（RNN）</h3>
+                    <p>通过循环结构记忆时间序列信息，在语音识别、文本分析等任务中表现突出。</p>
+                </article>
+                <article class="info-card">
+                    <h3>Transformer</h3>
+                    <p>基于自注意力机制并行处理序列，是当前自然语言处理与生成式 AI 的主流架构。</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="playground" class="section">
+            <div class="section-header">
+                <h2>交互体验：感受单个神经元</h2>
+                <p>调整权重、偏置和输入，观察一个简单的两输入神经元如何产生输出。</p>
+            </div>
+            <div class="playground">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="input1">输入 x₁</label>
+                        <input type="range" id="input1" min="-1" max="1" step="0.1" value="0.5">
+                        <span class="value" data-target="input1">0.5</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="input2">输入 x₂</label>
+                        <input type="range" id="input2" min="-1" max="1" step="0.1" value="-0.2">
+                        <span class="value" data-target="input2">-0.2</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="weight1">权重 w₁</label>
+                        <input type="range" id="weight1" min="-3" max="3" step="0.1" value="1.2">
+                        <span class="value" data-target="weight1">1.2</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="weight2">权重 w₂</label>
+                        <input type="range" id="weight2" min="-3" max="3" step="0.1" value="-0.8">
+                        <span class="value" data-target="weight2">-0.8</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="bias">偏置 b</label>
+                        <input type="range" id="bias" min="-2" max="2" step="0.1" value="0.2">
+                        <span class="value" data-target="bias">0.2</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="activation">激活函数</label>
+                        <select id="activation">
+                            <option value="relu">ReLU</option>
+                            <option value="sigmoid">Sigmoid</option>
+                            <option value="tanh">Tanh</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="results">
+                    <h3>计算过程</h3>
+                    <p>加权求和：<span id="weighted-sum">0</span></p>
+                    <p>激活后输出：<span id="activated-output">0</span></p>
+                    <div class="chart" aria-hidden="true">
+                        <div class="bar" id="output-bar"></div>
+                    </div>
+                    <p class="hint">输出值范围在 0 到 1（Sigmoid）、-1 到 1（Tanh）或 ≥0（ReLU）。观察不同激活函数对结果的影响。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="applications" class="section accent">
+            <div class="section-header">
+                <h2>现实世界中的应用</h2>
+                <p>神经网络正在各个行业改变我们的生活与工作方式。</p>
+            </div>
+            <div class="application-grid">
+                <article>
+                    <h3>计算机视觉</h3>
+                    <p>自动驾驶、医学影像诊断、安防监控中使用 CNN 识别场景与目标。</p>
+                </article>
+                <article>
+                    <h3>自然语言处理</h3>
+                    <p>翻译、聊天机器人、文本摘要依赖 RNN 与 Transformer 对语言建模。</p>
+                </article>
+                <article>
+                    <h3>推荐系统</h3>
+                    <p>电商与流媒体平台利用神经网络分析用户行为，提供个性化推荐。</p>
+                </article>
+                <article>
+                    <h3>生成式 AI</h3>
+                    <p>扩散模型、生成对抗网络（GAN）可以生成图片、音乐，甚至代码。</p>
+                </article>
+                <article>
+                    <h3>工业与科学</h3>
+                    <p>用于预测设备故障、优化能源调度、加速材料和药物发现。</p>
+                </article>
+                <article>
+                    <h3>负责任的 AI</h3>
+                    <p>解释性、偏见检测和模型监控帮助我们建立值得信赖的 AI 系统。</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="resources" class="section">
+            <div class="section-header">
+                <h2>术语速查与延伸阅读</h2>
+                <p>继续深入学习神经网络，可以从以下关键词和资源开始。</p>
+            </div>
+            <div class="resources">
+                <dl class="glossary">
+                    <div>
+                        <dt>梯度</dt>
+                        <dd>指损失函数对参数的导数，告诉我们参数需要往哪个方向调整。</dd>
+                    </div>
+                    <div>
+                        <dt>学习率</dt>
+                        <dd>控制每次更新的幅度，过大可能发散，过小训练会很慢。</dd>
+                    </div>
+                    <div>
+                        <dt>批量（Batch）</dt>
+                        <dd>一次前向/反向传播处理的数据数量，影响效率与稳定性。</dd>
+                    </div>
+                    <div>
+                        <dt>过拟合</dt>
+                        <dd>模型在训练集表现很好，但对新数据泛化能力差。</dd>
+                    </div>
+                    <div>
+                        <dt>迁移学习</dt>
+                        <dd>利用在大数据集上训练好的模型，快速适配新的任务。</dd>
+                    </div>
+                </dl>
+                <div class="links">
+                    <h3>推荐阅读</h3>
+                    <ul>
+                        <li><a href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">Deep Learning 电子书</a></li>
+                        <li><a href="https://playground.tensorflow.org/" target="_blank" rel="noopener">TensorFlow Playground</a></li>
+                        <li><a href="https://distill.pub/" target="_blank" rel="noopener">Distill 可视化文章</a></li>
+                        <li><a href="https://www.fast.ai/" target="_blank" rel="noopener">fast.ai 实践课程</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>希望这个网站能帮助你迈出理解神经网络的第一步。保持好奇，继续探索 AI 的世界！</p>
+        <a class="back-to-top" href="#top">回到顶部</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
